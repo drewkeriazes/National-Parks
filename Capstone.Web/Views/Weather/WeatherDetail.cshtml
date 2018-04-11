@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "5-Day Weather Forecast";
+}
+
+@using Capstone.Web.Models
+
+@model List<Weather>
+
+<head>
+
+    <link href="~/Content/CSS/weatherdetail.css" rel="stylesheet" />
+
+</head>
+
+<div class="main">
+    <h3>@ViewBag.Title</h3><br />
+
+    <form method="post" action="@Url.Action("isFahrenheit","Weather")">
+        <select name="isFahrenheit">
+            <option value=@Session["isFahrenheit"]> Select Temperature Type </option>
+            <option value="True"> Fahrenheit </option>
+            <option value="False"> Celsius </option>
+        </select>
+        <input type="submit" value="Submit" />
+        <input type="hidden" name="parkCode" value="@Model[0].ParkCode" />
+    </form>
+
+    <h2>@Model[0].ParkName</h2>
+
+    <table style="margin-top: 35px">
+        <tr>
+            <th style="width:15%">Day of the Week</th>
+            <th style="width:10%; text-align:center">High Temperature</th>
+            <th style="width:10%; text-align:center">Low Temperature</th>
+            <th style="width:10%"></th>
+            <th style="width:25%">Weather Forecast</th>
+            <th style="width:30%">Advisories</th>
+        </tr>
+
+        @foreach (Weather w in Model)
+        {
+            <tr class="post">
+                <td>
+                    <h4>@DateTime.Now.AddDays(w.FiveDayForecastValue - 1).DayOfWeek</h4>
+                </td>
+                <td>
+                    @if (Session["isFahrenheit"].ToString() == "True")
+                    {
+                        <p class="col">@w.HighTempF°F</p>
+                    }
+                    @if (Session["isFahrenheit"].ToString() == "False")
+                    {
+                        <p class="col">@Math.Round(w.HighTempC, 0)°C</p>
+                    }
+                </td>
+                <td>
+                    @if (Session["isFahrenheit"].ToString() == "True")
+                    {
+                        <p class="col">@w.LowTempF°F</p>
+                    }
+                    @if (Session["isFahrenheit"].ToString() == "False")
+                    {
+                        <p class="col">@Math.Round(w.LowTempC, 0)°C</p>
+                    }
+                </td>
+
+                <td>
+                    @if (w.Forecast == "snow")
+                    {
+                        <img class="img" src="/Content/Weather/snow2.png" />
+                    }
+                    @if (w.Forecast == "partly cloudy")
+                    {
+                        <img class="img" src="/Content/Weather/partlyCloudy2.png" />
+                    }
+                    @if (w.Forecast == "cloudy")
+                    {
+                        <img class="img" src="/Content/Weather/cloudy2.png" />
+                    }
+                    @if (w.Forecast == "rain")
+                    {
+                        <img class="img" src="/Content/Weather/rain2.png" />
+                    }
+                    @if (w.Forecast == "thunderstorms")
+                    {
+                        <img class="img" src="/Content/Weather/thunderstorms2.png" />
+                    }
+                    @if (w.Forecast == "sunny")
+                    {
+                        <img class="img" src="/Content/Weather/sunny2.png" />
+                    }
+                </td>
+                <td>
+                    <p>The forecast for today is @w.Forecast.</p>
+                </td>
+                <td>
+                    @if (w.Forecast == "snow")
+                    {
+                        <p> - Remember to pack snowshoes. </p>
+                    }
+                    @if (w.Forecast == "rain")
+                    {
+                        <p> - Remember to pack raingear and wear waterproof shoes. </p>
+                    }
+                    @if (w.Forecast == "thunderstorms")
+                    {
+                        <p> - Seek shelter! Avoid hiking on exposed ridges. </p>
+                    }
+                    @if (w.Forecast == "sunny")
+                    {
+                        <p> - Remember to pack sunblock. </p>
+                    }
+                    @if (w.HighTempF >= 75)
+                    {
+                        <p> - Remember to bring an extra gallon of water. </p>
+                    }
+                    @if ((w.HighTempF - w.LowTempF) > 20)
+                    {
+                        <p> - Temperatures will fluctuate, wear breathable layers. </p>
+                    }
+                    @if (w.LowTempF < 20)
+                    {
+                        <p> - Danger!! Exposure to frigid temperatures can be deadly. </p>
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,25 @@
+﻿.box {
+    display: inline-block;
+    width: 100%;
+    background-color: white;
+    border-radius: 7px;
+    margin-top: 75px;
+    margin-bottom: 100px;
+}
+
+    .box .post:nth-child(even) {
+        background-color: lightgray;
+        padding-bottom: 30px;
+    }
+
+.margin {
+    padding: 10px 10px;
+}
+
+.img {
+    height: 150px;
+}
+
+h2 {
+    font-weight: bold;
+}

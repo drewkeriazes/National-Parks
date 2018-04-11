@@ -1,0 +1,35 @@
+﻿@using Capstone.Web.Models
+@model List<Survey>
+
+<head>
+
+    <link href="~/Content/CSS/surveyresult.css" rel="stylesheet" />
+
+</head>
+
+<div class="box">
+
+    <h2 style="text-align:center"> Thank you for participating in the Favorite Park Survey!!!</h2>
+    <h3 style="text-align:center"> The National Parks are listed by popularity according the the survey.</h3>
+    <hr />
+
+    @foreach (var survey in Model)
+    {
+    <div class="post margin">
+        <table>
+            <tr>
+                <td>
+                    <a href=" @Url.Action("ParkDetail", "Home", new { parkCode = survey.ParkCode }, null)">
+                        <img class="img" src="/Content/@(survey.ParkCode).jpg" />
+                    </a>
+                </td>
+                <td>
+                    <h2 style="font-style:italic; padding-left:25px">@survey.ParkName </h2> <h3 style="padding-left:25px">Has received @survey.ParkVotes vote(s)</h3>
+                </td>
+            </tr>
+            <br />
+        </table>
+    </div>
+    
+    }
+</div>

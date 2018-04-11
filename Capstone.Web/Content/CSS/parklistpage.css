@@ -1,0 +1,28 @@
+﻿body {
+    background-color: lightgoldenrodyellow;
+}
+
+.main {
+    margin-top: 75px;
+}
+
+.row {
+    width: 100%;
+    height: 360px;
+}
+
+.img {
+    width: 45%;
+    height: 360px;
+    float: left;
+}
+
+.text {
+    float: left;
+    width: 50%;
+    height: 360px;
+}
+
+h2 {
+    font-weight: bold;
+}

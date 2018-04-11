@@ -1,0 +1,81 @@
+﻿body {
+    background-color: beige;
+}
+
+.main {
+    width: 75%;
+    margin-bottom: 75px;
+}
+
+.parkname {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.imgcontainer {
+    margin-top: 100px;
+    width: 30%;
+    float: right;
+}
+
+.img {
+    height: 350px;
+    width: 524px;
+    border: 1.5px solid black;
+    border-left: none;
+}
+
+.leftbox {
+    margin-top: 100px;
+    width: 68%;
+    height: 350px;
+    float: right;
+    padding-left: 5%;
+    border: 1.5px solid black;
+    background-color: lightgoldenrodyellow;
+}
+
+.subhead {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.bottom_main {
+    border: 1.5px solid black;
+    background-color: lightgoldenrodyellow;
+    border-top: none;
+    float: left;
+    width: 1105.5px;
+    margin-left: 17px;
+    margin-top: -1px;
+    margin-bottom: 75px;
+    padding: 25px 5% 35px 5%;
+}
+
+.quote {
+    text-align: center;
+    font-style: italic;
+}
+
+.description {
+    font-weight: 400;
+    font-size: small;
+    text-decoration: none;
+}
+
+.bottom_left {
+    float: left;
+    padding-left: 8%;
+    padding-right: 14%;
+}
+
+.bottom_right {
+    float: left;
+    padding-left: 14%;
+    padding-right: 8%;
+}
+
+.bottom_center {
+    float: left;
+    width: 150px;
+}

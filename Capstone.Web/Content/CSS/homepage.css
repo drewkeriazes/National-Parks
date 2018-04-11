@@ -1,0 +1,15 @@
+﻿body {
+    background-image: url('../../Content/foggy_mountains.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    position: center;
+    
+}
+
+.jumbotron {
+    background-color: rgba(0, 0, 0, 0.14);
+}
+
+h1 {
+    text-shadow: 3px 3px 6px #fff;
+}

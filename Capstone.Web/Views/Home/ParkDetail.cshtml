@@ -1,0 +1,55 @@
+﻿@using Capstone.Web.Models
+
+@model Park
+
+<head>
+
+    <link href="~/Content/CSS/parkdetail.css" rel="stylesheet" />
+
+</head>
+
+<div class="main">
+    <div class="imgcontainer">
+        @{string imagePath = Path.Combine("/Content/", (Model.ParkCode) + ".jpg");}
+        <div>
+            <a href="@Url.Action("ParkDetail","Home", new { parkCode = Model.ParkCode }, null)">
+                <img src="@imagePath" class="img" alt="Picture of Park" />
+            </a>
+        </div>
+    </div>
+    <div class="leftbox">
+        <h2 class="parkname">@Model.ParkName</h2>
+        <br />
+        <h4 class="subhead">Quick Stats</h4>
+        <p><b>Located In:</b> @Model.State</p>
+        <p><b>Founded:</b> @Model.YearFounded</p>
+        <p><b>Annual Visitors:</b> @String.Format("{0:n0}", Model.AnnualVisitorCount)</p>
+        <p><b>Total Acreage:</b> @String.Format("{0:n0}", Model.Acreage)</p>
+        <p><b>Average Elevation:</b> @String.Format("{0:n0}", Model.ElevationInFeet) ft.</p>
+        <br />
+        <p><b>Daily Entrance Fee:</b> $@Model.EntryFee</p>
+    </div>
+    <div class="bottom_main">
+        <p class="quote">"@Model.InspirationalQuote" - @Model.InspirationalQuoteSource</p><hr />
+        <h5><b>Description:</b> <span class="description">@Model.ParkDescription</span></h5>
+        <br />
+
+        <div>
+            <div class="bottom_left">
+                <h4 class="subhead">Camping & Hiking</h4>
+                <p><b>Number of Campsites:</b> @Model.NumberOfCampsites</p>
+                <p><b>Miles of Trails:</b> @String.Format("{0:n0}", Model.MilesOfTrail)</p>
+            </div>
+            <div class="bottom_center">
+                <a href=" @Url.Action("WeatherDetail", "Weather", new { parkCode = Model.ParkCode }, null)">
+                <p style="color:forestgreen"><b>Five-Day Weather Forecast for @Model.ParkName</b></p>
+                </a>
+            </div>
+            <div class="bottom_right">
+                <h4 class="subhead">Climate & Ecology</h4>
+                <p><b>Climate Zone:</b> @Model.Climate</p>
+                <p><b>Number of Animal Species:</b> @Model.NumberOfAnimalSpecies</p>
+            </div>
+        </div>
+    </div>
+</div>
